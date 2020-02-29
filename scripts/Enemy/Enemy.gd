@@ -3,9 +3,9 @@ extends KinematicBody2D
 signal attack_clicked_on(myself)
 signal died
 
-var Projectile = preload("res://scenes/Projectile.tscn")
-var max_health = 100
-var health = 100
+export(int) var max_health: int = 100
+export(int) var health: int = 100
+# TODO: make this scale for multiple enemies
 var starting_position: Vector2
 var going_up = true
 
