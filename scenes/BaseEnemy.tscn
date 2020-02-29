@@ -27,9 +27,6 @@ margin_bottom = 14.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-rotation = -1.57079
 [connection signal="died" from="." to="." method="_on_self_died"]
 [connection signal="health_changed" from="." to="." method="_on_self_health_changed"]
 [connection signal="input_event" from="ClickingArea" to="." method="_on_ClickingArea_input_event"]
