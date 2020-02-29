@@ -1,77 +1,16 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
-
-[sub_resource type="GDScript" id=1]
-script/source = "extends KinematicBody2D
-
-signal attack_clicked_on(myself)
-signal died
-
-var Projectile = preload(\"res://Projectile.tscn\")
-var max_health = 100
-var health = 100
-var starting_position: Vector2
-var going_up = true
-
-func harm(damage):
-	var new_health = health - damage
-	if new_health <= 0:
-		health = 0
-	else:
-		health = new_health
-	# Make the enemy invincible
-	# For debugging purposes.
-#	heal(damage)
-
-func heal(amount):
-	var new_health = health + amount
-	if new_health >= max_health:
-		health = max_health
-	else:
-		health = new_health
-
-
-func _ready() -> void:
-	$HealthBar.max_value = max_health
-	$HealthBar.value = health
-	starting_position = position
-
-func _process(delta: float) -> void:
-	if health <= 0:
-		emit_signal(\"died\")
-		queue_free()
-	$HealthBar.value = health
-
-func _physics_process(delta: float) -> void:
-	# Target practice
-	if going_up:
-		if position.y < starting_position.y - 150: going_up = false
-		move_and_slide(Vector2(0,-1)*150)
-	else:
-		if position.y > starting_position.y + 150: going_up = true
-		move_and_slide(Vector2(0,1)*150)
-"
+[ext_resource path="res://scripts/Enemy/ClickingArea.gd" type="Script" id=2]
+[ext_resource path="res://scripts/Enemy/Enemy.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 32.5263, 32.1878 )
 
-[sub_resource type="GDScript" id=3]
-script/source = "extends Area2D
-
-func _ready() -> void:
-	pass
-
-func _input_event(viewport: Object, event: InputEvent, shape_idx: int):
-	if event.is_action_pressed(\"attack\"):
-		get_parent().emit_signal(\"attack_clicked_on\", get_parent())
-		return(self) # returns a reference to this node
-"
-
 [node name="Enemy" type="KinematicBody2D"]
 collision_layer = 4
 collision_mask = 30
-script = SubResource( 1 )
+script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 1, 0, 0, 1 )
@@ -85,7 +24,7 @@ shape = SubResource( 2 )
 [node name="ClickingArea" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 30
-script = SubResource( 3 )
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickingArea"]
 scale = Vector2( 1, 2.81354 )
