@@ -23,7 +23,7 @@ func _ready() -> void:
 	health_bar.value = health
 
 func _process(delta: float) -> void:
-	position_label.text = str(position)
+	pass
 
 
 func _physics_process(delta: float) -> void:
