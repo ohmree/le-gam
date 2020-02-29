@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 signal moved(target_pos)
 signal health_changed(new_health)
-
+signal attack_cooldown_reset
 
 onready var health_bar := $HealthBar
 onready var position_label := $PositionLabel
@@ -54,3 +54,4 @@ func _on_Enemy_died() -> void:
 func _on_AttackCooldown_timeout() -> void:
 	can_attack = true
 	attack_cooldown.stop()
+	emit_signal("attack_cooldown_reset")

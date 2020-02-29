@@ -1,36 +1,21 @@
 extends Node2D
 
-var MoveMarker = preload("res://scenes/MoveMarker.tscn")
+# TODO: organize this file, it's a bit fugly
+
 var Enemy = preload("res://scenes/BaseEnemy.tscn")
-var has_player_moved = false
-onready var hero_attack_cooldown = $Hero/AttackCooldown
-onready var attack_timer_progress = $HUD/AttackTimerProgress
-onready var m = MoveMarker.instance()
-onready var enemy = $Enemy
-onready var enemy_dupe = enemy.duplicate()
-var enemy_starting_pos: Vector2 = Vector2(752, 280)
-var t
+var player_moved_once = false
+onready var hero = $Hero
+onready var hud = $HUD
+onready var move_marker = $MoveMarker
 
 func _ready() -> void:
-	attack_timer_progress.max_value = hero_attack_cooldown.wait_time
-	attack_timer_progress.value = hero_attack_cooldown.time_left
-	enemy_dupe.position = enemy_starting_pos
-	t = Timer.new()
-	t.set_wait_time(1)
-	t.set_one_shot(true)
-	self.add_child(t)
-
-func _process(delta: float) -> void:
-	attack_timer_progress.value = \
-	attack_timer_progress.max_value - hero_attack_cooldown.time_left
+	hud.start(
+		hero.attack_cooldown.wait_time,
+		hero.attack_cooldown.time_left
+	)
 
 func _on_Hero_moved(target_pos: Vector2) -> void:
-	m.position = target_pos
-	if not has_player_moved:
-		add_child(m)
-		has_player_moved = true
-
-func _on_Enemy_died() -> void:
-	t.start()
-	yield(t, "timeout")
-	add_child(enemy_dupe.duplicate())
+	move_marker.position = target_pos
+	if not player_moved_once:
+		move_marker.show()
+		player_moved_once = true
