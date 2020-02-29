@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/BaseEnemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/BaseHero.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Obstacle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Ground.tscn" type="PackedScene" id=4]
@@ -31,6 +31,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="moved" from="Hero" to="." method="_on_Hero_moved"]
-[connection signal="attack_clicked_on" from="Enemy" to="Hero" method="_on_Enemy_attack_clicked_on"]
 [connection signal="died" from="Enemy" to="Hero" method="_on_Enemy_died"]
 [connection signal="died" from="Enemy" to="." method="_on_Enemy_died"]

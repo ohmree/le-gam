@@ -1,12 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://scripts/Enemy/ClickingArea.gd" type="Script" id=2]
-[ext_resource path="res://scripts/Enemy/Enemy.gd" type="Script" id=3]
+[ext_resource path="res://scripts/BaseEnemy.gd" type="Script" id=3]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 32.5263, 32.1878 )
-
-[node name="Enemy" type="KinematicBody2D"]
+[node name="BaseEnemy" type="KinematicBody2D"]
 collision_layer = 4
 collision_mask = 30
 script = ExtResource( 3 )
@@ -21,11 +17,9 @@ scale = Vector2( 1, 2.81354 )
 [node name="ClickingArea" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 30
-script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickingArea"]
 scale = Vector2( 1, 2.81354 )
-shape = SubResource( 2 )
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 margin_right = 64.0
@@ -36,3 +30,6 @@ __meta__ = {
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 rotation = -1.57079
+[connection signal="died" from="." to="." method="_on_self_died"]
+[connection signal="health_changed" from="." to="." method="_on_self_health_changed"]
+[connection signal="input_event" from="ClickingArea" to="." method="_on_ClickingArea_input_event"]

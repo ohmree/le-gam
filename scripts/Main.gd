@@ -1,7 +1,7 @@
 extends Node2D
 
 var MoveMarker = preload("res://scenes/MoveMarker.tscn")
-var Enemy = preload("res://scenes/Enemy.tscn")
+var Enemy = preload("res://scenes/BaseEnemy.tscn")
 var has_player_moved = false
 onready var hero_attack_cooldown = $Hero/AttackCooldown
 onready var attack_timer_progress = $HUD/AttackTimerProgress
