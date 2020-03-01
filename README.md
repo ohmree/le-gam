@@ -7,6 +7,9 @@ A single player 2D top-down MOBA-ARPG-RTS-ish game in Godot maybe?
 
 Controls: right click to move, left click to select attack target
 
+Both demos were exported with debug, as I couldn't run them without it, and I just figured GLES2 would be better for a web thing.
+If anyone has any
+
 ## Still a ton to implement, but some of the basics are there:
  * Movement
  * ~~Ranged auto-attacks~~ need to reimplement
