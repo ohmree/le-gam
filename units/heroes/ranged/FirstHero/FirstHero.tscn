@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://units/heroes/HeroUnit.tscn" type="PackedScene" id=1]
+[ext_resource path="res://units/heroes/ranged/FirstHero/Shape.tres" type="Shape2D" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://units/heroes/ranged/FirstHero/FirstHero.gd" type="Script" id=4]
+[ext_resource path="res://units/RangedBehavior.tscn" type="PackedScene" id=5]
+
+[node name="FirstHero" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+max_health = 100
+speed = 100
+attack_damage = 15
+attack_range = 5
+AttackBehaviorProvider = ExtResource( 5 )
+
+[node name="Sprite" parent="." index="0"]
+modulate = Color( 0, 0.0627451, 1, 1 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="ClickingArea" index="0"]
+shape = ExtResource( 2 )
+
+[node name="HealthBar" parent="." index="3"]
+margin_left = -32.0
+margin_top = -48.0
+margin_right = 32.0
+margin_bottom = -34.0

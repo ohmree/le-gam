@@ -1,12 +1,14 @@
 # le-gam
 A single player 2D top-down MOBA-ARPG-RTS-ish game in Godot maybe?
 
-[A demo of the current features](https://nifty-shockley-f8406d.netlify.com/)
+[A barebones demo of the current features](https://kind-allen-64e733.netlify.com/)
+[Previous demo with a few more features but less flexible architecture](https://nifty-shockley-f8406d.netlify.com/)
+Controls: right click to move, left click to select attack target
 
 ## Still a ton to implement, but some of the basics are there:
  * Movement
- * Ranged auto-attacks
- * Health and attack damage
+ * ~~Ranged auto-attacks~~ need to reimplement
+ * Health and attack damage (I guess?)
 
 ## Some things that I'll probably have to implement in this version of the game:
  * Abilities - think League of Legends but with one less ability and generally less complex
@@ -42,4 +44,4 @@ A single player 2D top-down MOBA-ARPG-RTS-ish game in Godot maybe?
 Not much else to say, crappy code and unfinished garbage ahead.
 
 If anyone who actually knows Godot sees this, I'd appreciate it if you could help me with some best organization/structure practices.
-Current codebase is kind of a mess.
+Current codebase isn't as much of a mess as it used to be, but there's still a lot of room for improvement.

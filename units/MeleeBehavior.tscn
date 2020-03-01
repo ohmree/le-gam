@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://units/MeleeBehavior.gd" type="Script" id=1]
+
+[node name="MeleeBehavior" type="Node"]
+script = ExtResource( 1 )

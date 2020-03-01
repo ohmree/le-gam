@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://units/heroes/ranged/FirstHero/FirstHero.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/Main.gd" type="Script" id=3]
+[ext_resource path="res://scenes/MoveMarker.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Ground.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Obstacle.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=8]
+[ext_resource path="res://units/enemies/ranged/FirstEnemy/FirstEnemy.tscn" type="PackedScene" id=9]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="TileMap" parent="." instance=ExtResource( 5 )]
+
+[node name="Obstacle" parent="." instance=ExtResource( 7 )]
+modulate = Color( 0.478431, 0.247059, 0, 1 )
+position = Vector2( 1008, 480 )
+
+[node name="Hero" parent="." instance=ExtResource( 1 )]
+position = Vector2( 664, 392 )
+
+[node name="Enemy" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1376, 384 )
+
+[node name="MoveMarker" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="HUD" parent="." instance=ExtResource( 8 )]
+[connection signal="move_target_updated" from="Hero" to="." method="_on_Hero_move_target_updated"]
