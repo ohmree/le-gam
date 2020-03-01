@@ -23,4 +23,4 @@ git_api*
 # Assets
 # TODO: decide what to do with them.
 # Pretty sure I don't want them in the main code repo
-assets/
+# assets/
